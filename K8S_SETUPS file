@@ -42,19 +42,38 @@ EOF
 ON Master as root 
 ● # kubeadm init 
 Your Kubernetes control-plane has initialized successfully! 
-ON MASTER : 
--------------------------- 
-mkdir -p $HOME/.kube 
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config sudo chown $(id -u):$(id -g) $HOME/.kube/config 
-ON NODES: 
----------------------- 
-kubeadm join 172.31.31.201:6443 --token yhw2d8.3bs6uy3sdk7io3a6 \ --discovery-token-ca-cert-hash 
-sha256:dce968b1437bd4f2dc122cfc2416003186a0bf744ac17767f4e2f053fe4 34586
+After running the (kubeadm init) command this code is displayed:
+--------------------------------------------------------------
+
+Your Kubernetes control plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+On master As Root:
+-------------------
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+
+On all Nodes:
+-----------------
+
+kubeadm join 172.31.9.185:6443 --token g3z90a.pc4nn9iiih0ofkc4 \
+        --discovery-token-ca-cert-hash sha256:41f115d0ba741d76f3c7be5e7b7750fa9d86f67057e16b855670188573a4603d
+
+
 kubectl get nodes 
 kubectl get pods 
+
 On master as root: 
-kubectl apply -f 
-"https://cloud.weave.works/k8s/net?k8s-version=$( kubectl version | base64 | tr -d '\n')" 
+---------------------
+
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$( kubectl version | base64 | tr -d '\n')"
+On master as root: 
+
+
 STEPS TO CREATE PODS 
 Create a Sample Pod i.e file with pod.yml 
 apiVersion: v1 
