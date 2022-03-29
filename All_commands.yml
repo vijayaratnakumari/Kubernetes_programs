@@ -1,0 +1,19 @@
+Execute following commands
+$kubectl create -f rc.yml
+$kubectl get rc -o wide
+$kubectl describe rc
+$kubectl apply -f rc.yml
+$kubectl get rc
+$kubectl get pods
+$Kubectl delete rc/rcname
+
+#commands for SVC(SERVICES) 
+$ kubectl create -f SVC.yml
+$ kubectl apply -f SVC.yml
+$ kubectl get SVC
+$ kubectl describe SVC hello-SVC
+
+#kubernetes list endpoint commands
+
+$ kubectl get ep
+$ kubectl describe ep hello-SVC
